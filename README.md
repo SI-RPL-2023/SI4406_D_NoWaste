@@ -1,8 +1,8 @@
-### Prasyarat
+## Prasyarat
 1. PHP 8.1 or higher.
 2. XAMPP
 
-### Instalasi
+## Instalasi
 
 1. Clone or download the repository.
 2. Update Composer.
