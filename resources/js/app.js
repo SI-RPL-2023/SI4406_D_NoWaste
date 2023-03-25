@@ -1,3 +1,3 @@
-import './bootstrap';
+import * as bootstrap from 'bootstrap';
 
-import '../sass/app.scss'
+import '../sass/app.scss';
