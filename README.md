@@ -18,11 +18,11 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
-5. Jalankan `npm install`.
-6. Migrasi *database*.
+5. Migrasi *database*.
 ```
 php artisan migrate
 ```
+6. Jalankan `npm install`.
 7. Jalankan `npm run dev`.
 8. Jalankan aplikasi laravel.
 ```
