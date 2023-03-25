@@ -11,9 +11,6 @@
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/1565b44817.js" crossorigin="anonymous"></script>
-
-        <!-- Simple line icons-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         
         <!-- Fonts -->
         <link href="https://fonts.cdnfonts.com/css/maison-neue" rel="stylesheet">
@@ -22,6 +19,8 @@
         <!-- Styles -->
         @vite(['resources/js/app.js'])
         <link href="/assets/css/styles.css" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     </head>
     <body class="bg-white">
@@ -47,7 +46,12 @@
                 <h2 class="text-center mb-4">Temukan <span class="text-primary">Makanan</span>mu</h2>
                 <div class="d-flex justify-content-center">
                     <form class="w-50" role="search">
-                        <input class="form-control px-5 py-3 rounded-pill fs-5" type="search" placeholder="Cari merchant atau makanan" aria-label="Search">
+                        <div id="searchbar" class="form-control px-5 py-3 rounded-pill fs-5 d-flex">
+                            <div id="search-icon" class="align-self-center me-3 pt-1 text-secondary">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <input class="search-input w-100 pt-1" type="search" placeholder="Cari merchant atau makanan" aria-label="Search">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -161,10 +165,22 @@
         
         @include('landing.partials.footer')
 
-        <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="assets/js/scripts.js"></script>
+        <script>
+        $(".search-input").focusin(function(){
+            $("#searchbar").css({
+                'box-shadow': '0 0 0 .25rem #00aa1340',
+                'border-color': '#00aa1340'
+            });
+            $("div#search-icon").removeClass("text-secondary").addClass("text-primary");
+        });
+        $(".search-input").focusout(function(){
+            $("#searchbar").css({
+                'box-shadow': 'none',
+                'border-color': '#ced4da'
+            });
+            $("div#search-icon").removeClass("text-primary").addClass("text-secondary");
+        });
+        </script>
+
     </body>
 </html>
