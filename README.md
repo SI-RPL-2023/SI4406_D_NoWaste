@@ -1,7 +1,7 @@
 ## Prasyarat
 1. PHP 8.1
 2. XAMPP
-3. Node.js 
+3. Node.js (https://nodejs.org/en/download)
 
 ## Instalasi
 
@@ -24,7 +24,7 @@ php artisan key:generate
 php artisan migrate
 ```
 6. Jalankan `npm install`.
-7. Jalankan `npm run dev`.
+7. Jalankan `npm run build`.
 8. Jalankan aplikasi laravel.
 ```
 php artisan serve
