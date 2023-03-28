@@ -1,0 +1,8 @@
+@font-face {font-family: "Maison Neue Book";
+  src: url("3724ece79a634e7b5168905d01e59a64.eot"); /* IE9*/
+  src: url("3724ece79a634e7b5168905d01e59a64.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("3724ece79a634e7b5168905d01e59a64.woff2") format("woff2"), /* chrome、firefox */
+  url("3724ece79a634e7b5168905d01e59a64.woff") format("woff"), /* chrome、firefox */
+  url("3724ece79a634e7b5168905d01e59a64.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("3724ece79a634e7b5168905d01e59a64.svg#Maison Neue Book") format("svg"); /* iOS 4.1- */
+}

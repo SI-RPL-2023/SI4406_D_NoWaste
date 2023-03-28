@@ -13,8 +13,9 @@
         <script src="https://kit.fontawesome.com/1565b44817.js" crossorigin="anonymous"></script>
         
         <!-- Fonts -->
-        <link href="https://fonts.cdnfonts.com/css/maison-neue" rel="stylesheet">
         <link href="/assets/fonts/maison-neue-extended-extra-bold.css" rel="stylesheet">
+        <link href="/assets/fonts/maison-neue-book.css" rel="stylesheet">
+        <link href="/assets/fonts/maison-neue-demi.css" rel="stylesheet">
 
         <!-- Styles -->
         @vite(['resources/js/app.js'])
@@ -25,7 +26,7 @@
     </head>
     <body class="bg-white">
         
-        @include('landing.partials.navbar')
+        @include('web.partials.navbar')
 
         <!-- Masthead-->
         <header class="masthead text-white">
@@ -143,7 +144,7 @@
                             <div class="col-lg-6">
                                 <a class="h5 text-dark text-decoration-none">Bagi-bagi Makanan Gratis, Rayakan Bulan Kebersamaan</a>
                                 <div class="text-primary">23 Mar 2023</div>
-                                <p class="text-secondary font-custom" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
+                                <p class="font-maisonBook" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
                             </div>
                         </div>
                     </div>
@@ -155,7 +156,7 @@
                             <div class="col-lg-6">
                                 <a class="h5 text-dark text-decoration-none">Pakai Debit BCA, Harga Lebih Murah</a>
                                 <div class="text-primary">6 Mar 2023</div>
-                                <p class="text-secondary font-custom" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
+                                <p class="font-maisonBook" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
                             </div>
                         </div>
                     </div>
@@ -163,7 +164,7 @@
             </div>
         </section>
         
-        @include('landing.partials.footer')
+        @include('web.partials.footer')
 
         <script>
         $(".search-input").focusin(function(){
