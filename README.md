@@ -33,7 +33,7 @@ php artisan serve
 ## Repositori
 1. Buat *branch* baru dengan nama anggota.
 2. Commit ke `main` hanya bisa dengan *pull request* dari *branch* masing-masing.
-3. Tulis deskripsi *commit* dengan jelas.
+3. Tulis deskripsi *commit* dengan jelas dan bahasa yang tepat.
 
 ## Lisensi
 
