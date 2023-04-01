@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('merchant_id')->constrained('merchants');
             $table->string('name');
-            $table->tinyInteger('type');
             $table->integer('price');
             $table->integer('stock');
             $table->text('description')->nullable();
+            $table->string('photo');
             $table->timestamps();
         });
     }
