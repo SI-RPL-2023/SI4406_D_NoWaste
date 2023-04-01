@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/1565b44817.js" crossorigin="anonymous"></script>
     
     <!-- Fonts -->
     <link href="/assets/fonts/maison-neue-extended-extra-bold.css" rel="stylesheet">
@@ -18,7 +15,9 @@
     @vite(['resources/js/app.js'])
     <link href="/assets/css/styles.css" rel="stylesheet">
 
+    <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 <body class="bg-white font-maisonDemi">
     <!-- Navigation -->
@@ -31,7 +30,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Toko Jaya 2
+                    {{ auth()->guard('merchant')->user()->name }}
                 </a>
                 
                 <div class="dropdown-menu position-absolute dropdown-menu-end animate slideIn" aria-labelledby="navbarDropdown">
@@ -57,16 +56,16 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-secondary">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/home">Beranda</a>
+                                <a class="nav-link active" aria-current="page" href="/merchant">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/teacher">Menu</a>
+                                <a class="nav-link" href="/merchant/menu">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/student">Keuangan</a>
+                                <a class="nav-link" href="/merchant/finance">Keuangan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/class">Profil</a>
+                                <a class="nav-link" href="/merchant/profile">Profil</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
