@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (Auth::guard('merchant')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/merchant');
         }
 
         return back()->with('LoginError', 'Email atau password salah');
