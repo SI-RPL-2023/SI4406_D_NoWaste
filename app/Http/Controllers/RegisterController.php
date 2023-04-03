@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Merchant;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -16,13 +16,13 @@ class RegisterController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|unique:users|max:255',
+            'email' => 'required|unique:merchants|max:255',
             'password' => 'required|max:255'
         ]);
 
         $validated['password'] = password_hash($validated['password'], PASSWORD_DEFAULT);
 
-        if(User::create($validated)){
+        if(Merchant::create($validated)){
             $request->session()->flash('status', 'Berhasil mendaftar');
             return redirect('/login');
         }
