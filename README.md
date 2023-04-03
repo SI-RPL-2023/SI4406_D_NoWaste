@@ -1,7 +1,8 @@
 ## Prasyarat
 1. PHP 8.1
 2. XAMPP
-3. Node.js (https://nodejs.org/en/download)
+3. Node.js LTS (https://nodejs.org/en/download)
+
 
 ## Instalasi
 
