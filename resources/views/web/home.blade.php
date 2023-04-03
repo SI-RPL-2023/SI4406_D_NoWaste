@@ -21,6 +21,7 @@
         @vite(['resources/js/app.js'])
         <link href="/assets/css/styles.css" rel="stylesheet">
 
+        <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     </head>
