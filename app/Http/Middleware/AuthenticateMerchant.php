@@ -16,9 +16,13 @@ class AuthenticateMerchant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard('auth.merchant')->check()){
+        if (Auth::guard('merchant')->user()) {
+            return $next($request);
+        }
+        if ($request->ajax() || $request->wantsJson()) {
+            return response('Unauthorized.', 401);
+        } else {
             return redirect('login');
         }
-        return $next($request);
     }
 }
