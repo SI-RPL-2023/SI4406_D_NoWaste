@@ -7,12 +7,16 @@
         <title>NoWaste</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.cdnfonts.com/css/maison-neue" rel="stylesheet">
         <link href="/assets/fonts/maison-neue-extended-extra-bold.css" rel="stylesheet">
+        <link href="/assets/fonts/maison-neue-book.css" rel="stylesheet">
+        <link href="/assets/fonts/maison-neue-demi.css" rel="stylesheet">
 
         <!-- Styles -->
         @vite(['resources/js/app.js'])
         <link href="/assets/css/styles.css" rel="stylesheet">
+
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         
     </head>
     <body>
@@ -39,7 +43,7 @@
                                     @csrf
                                     <div class="mb-3">
                                         <input type="text" class="form-control py-3 @error('name') is-invalid @enderror" name="name"
-                                            placeholder="Nama" value="{{ old('name') }}" required>
+                                            placeholder="Nama Bisnis/Restoran" value="{{ old('name') }}" required>
                                         @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -66,9 +70,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <input type="password" class="form-control py-3" id="InputRepeatPassword" onkeyup="check();" placeholder="Konfirmasi Password" required>
-                                        <div id='message' class="text-center mt-1"></div>
+                                        <div id="message" class="mt-1"></div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary form-control text-white py-3 rounded-pill">Daftar</button>  
+                                    <button type="submit" id="ButtonSubmit" class="btn btn-primary form-control text-white py-3 rounded-pill mt-3">Daftar</button>  
                                 </form>
                             </div>
                         </div>
@@ -87,6 +91,24 @@
             </div>
     
         </div>
+
+        <script>
+            var check = function() {
+                if ($("#InputRepeatPassword").val() != $("#InputPassword").val()) {
+                    $("#ButtonSubmit").attr("disabled", true);
+                    $("#message").css({
+                        'display': 'block',
+                        'margin-top': '0.25rem',
+                        'font-size': '0.875em',
+                        'color': '#dc3545'
+                    });
+                    $("#message").html("Password harus sesuai");
+                }else if ($("#InputRepeatPassword").val() == $("#InputPassword").val()) {
+                    $("#ButtonSubmit").removeAttr("disabled");
+                    $("#message").css('display', 'none');
+                }
+            }
+        </script>
 
     </body>
 </html>
