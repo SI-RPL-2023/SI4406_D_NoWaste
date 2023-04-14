@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Merchant;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +19,7 @@ class DatabaseSeeder extends Seeder
         Merchant::factory()->create([
              'name' => 'Dunkin Donut Bojongsoang',
              'email' => 'test@example.com',
-             'password' => 'password',
+             'password' => Hash::make('password'),
         ]);
     }
 }
