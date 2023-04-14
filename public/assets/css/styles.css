@@ -61,7 +61,7 @@ input[type="search"].dark::-webkit-search-cancel-button {
     filter: invert(1);
 }
 
-.active {
+.active-cs {
     color: black !important;
 }
 
@@ -79,4 +79,14 @@ img.img-product {
 .btn-custom:hover {
     border-color: rgba(0, 0, 0, 0.175) !important;
     border-width: 1px;
+}
+
+.w-lg-50 {
+    width: 100% !important;
+}
+
+@media (min-width: 992px) {
+    .w-lg-50 {
+        width: 50% !important;
+    }
 }
