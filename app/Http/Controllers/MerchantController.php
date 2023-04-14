@@ -9,6 +9,6 @@ class MerchantController extends Controller
     //
     public function index()
     {
-        return view('merchant/app');
+        return view('merchant.layout.app');
     }
 }

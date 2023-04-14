@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('bio')->nullable();
+            $table->string('photo')->default('https://placehold.co/600x400?text=Image+Not+Found');
             $table->timestamps();
         });
     }
