@@ -51,8 +51,8 @@
                         <div id="search-icon" class="align-self-center me-3 pt-1 text-secondary">
                             <i class="fa fa-search"></i>
                         </div>
-                        <form class="w-100" action="/">
-                            <input class="search-input w-100 pt-1" type="search" name="search" placeholder="Cari merchant atau makanan" value="{{ request('search') }}" aria-label="Search">
+                        <form class="w-100" action="/search">
+                            <input class="search-input w-100 pt-1" type="search" name="keyword" placeholder="Cari merchant atau makanan" value="{{ request('keyword') }}" aria-label="Search">
                         </form>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         @foreach ($Merchants as $Merchant)
                         <div class="col-lg-3 mb-3">
                             <div class="card border-0">
-                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="{{ $Merchant->photo }}">
+                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Merchant->photo }}">
                                 <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Merchant->name }}</a>
                                 <div class="text-secondary">Roti, Kue</div>
                             </div>
@@ -91,7 +91,13 @@
                             <div class="card border-0">
                                 <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Product->photo }}">
                                 <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Product->name }}</a>
-                                <div class="text-secondary">Roti, Kue</div>
+                                <div>
+                                    @if ($Product->price != 0)
+                                    <span class="text-secondary">IDR {{ number_format($Product->price) }}</span>
+                                    @else
+                                    <span class="text-primary">Gratis</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         @endforeach
