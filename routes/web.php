@@ -20,10 +20,14 @@ use Illuminate\Auth\Middleware\AuthenticateMerchant;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/search', [HomeController::class, 'search']);
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'auth']);
+
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
+
 Route::group(['prefix' => 'merchant', 'middleware' => 'auth.merchant'], function() {
     Route::get('/', [MerchantController::class, 'index']);
     Route::get('/menu', [ProductController::class, 'index']);
@@ -31,6 +35,5 @@ Route::group(['prefix' => 'merchant', 'middleware' => 'auth.merchant'], function
     Route::post('/menu/add', [ProductController::class, 'store']);
     Route::get('/menu/edit', [ProductController::class, 'edit']);
     Route::post('/menu/edit', [ProductController::class, 'update']);
-
     Route::get('/logout', [LoginController::class, 'destroy']);
 });

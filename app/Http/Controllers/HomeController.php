@@ -10,17 +10,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if(request('search')){
-            return view('web.find', [
-                "title" => "Pencarian: ".request('search'),
-                "keyword" => request('search'),
-                "Products" => Product::latest()->where('name', 'like', '%' . request('search') . '%')->get(),
-                "Merchants" => Merchant::latest()->where('name', 'like', '%' . request('search') . '%')->get()
-            ]);
-        }
         return view('web.home', [
             "Products" => Product::latest()->limit(4)->get(),
             "Merchants" => Merchant::latest()->limit(4)->get()
+        ]);
+    }
+
+    public function search()
+    {
+        return view('web.search', [
+            "title" => "Pencarian: ".request('keyword'),
+            "keyword" => request('keyword'),
+            "Products" => Product::latest()->filter()->get(),
+            "Merchants" => Merchant::latest()->where('name', 'like', '%' . request('keyword') . '%')->get()
         ]);
     }
 }
