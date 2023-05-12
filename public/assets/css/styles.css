@@ -72,6 +72,13 @@ img.img-product {
     aspect-ratio: 4/3;
 }
 
+img.img-product-edit {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+}
+
 .btn-custom {
     border-color: rgba(0, 0, 0, 0.175);
     border-width: 1px;
@@ -84,7 +91,6 @@ img.img-product {
 .w-lg-50 {
     width: 100% !important;
 }
-
 @media (min-width: 992px) {
     .w-lg-50 {
         width: 50% !important;
