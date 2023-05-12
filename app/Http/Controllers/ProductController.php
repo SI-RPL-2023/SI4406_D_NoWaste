@@ -47,7 +47,7 @@ class ProductController extends Controller
         if(Product::create($validated)){
             return redirect('/merchant/menu')->with('success', 'Menu baru berhasil ditambahkan.');
         }else {
-            return back()->with('ErrorStore', 'Menu gagal ditambahkan.');
+            return back()->with('error', 'Menu gagal ditambahkan.');
         }
     }
 
@@ -64,7 +64,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('merchant.menu.edit', [
+            'Product' => $product
+        ]);
     }
 
     /**
@@ -72,7 +74,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'merchant_id' => 'required',
+            'name' => 'required|max:255',
+            'price' => 'required|max:8',
+            'stock' => 'required|max:8',
+            'description' => 'max:255',
+            'photo' => 'image|mimes:jpg,jpeg,png,svg|max:2048'
+        ]);
+
+        if($request->file('photo')){
+            $validated['photo'] = $request->file('photo')->store('uploads', 'public');
+        }
+
+        if(Product::where('id', $product->id)->update($validated)){
+            return redirect('/merchant/menu')->with('success', 'Perubahan berhasil disimpan.');
+        }else {
+            return back()->with('error', 'Perubahan gagal disimpan.');
+        }
     }
 
     /**
@@ -80,6 +99,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if(Product::where('id', $product->id)->delete()){
+            return redirect('/merchant/menu')->with('error', 'Menu berhasil dihapus.');
+        }
     }
 }

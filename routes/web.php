@@ -33,7 +33,8 @@ Route::group(['prefix' => 'merchant', 'middleware' => 'auth.merchant'], function
     Route::get('/menu', [ProductController::class, 'index']);
     Route::get('/menu/add', [ProductController::class, 'create']);
     Route::post('/menu/add', [ProductController::class, 'store']);
-    Route::get('/menu/edit', [ProductController::class, 'edit']);
-    Route::post('/menu/edit', [ProductController::class, 'update']);
+    Route::get('/menu/{product}/edit', [ProductController::class, 'edit']);
+    Route::post('/menu/{product}/edit', [ProductController::class, 'update']);
+    Route::delete('/menu/{product}', [ProductController::class, 'destroy']);
     Route::get('/logout', [LoginController::class, 'destroy']);
 });
