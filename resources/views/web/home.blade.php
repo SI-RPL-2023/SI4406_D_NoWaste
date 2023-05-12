@@ -47,14 +47,14 @@
             <div class="container">
                 <h2 class="text-center mb-4">Temukan <span class="text-primary">Makanan</span>mu</h2>
                 <div class="d-flex justify-content-center">
-                    <form class="w-50" role="search">
-                        <div id="searchbar" class="form-control px-5 py-3 rounded-pill fs-5 d-flex">
-                            <div id="search-icon" class="align-self-center me-3 pt-1 text-secondary">
-                                <i class="fa fa-search"></i>
-                            </div>
-                            <input class="search-input w-100 pt-1" type="search" placeholder="Cari merchant atau makanan" aria-label="Search">
+                    <div id="searchbar" class="w-lg-50 form-control px-5 py-3 rounded-pill fs-5 d-flex">
+                        <div id="search-icon" class="align-self-center me-3 pt-1 text-secondary">
+                            <i class="fa fa-search"></i>
                         </div>
-                    </form>
+                        <form class="w-100" action="/search">
+                            <input class="search-input w-100 pt-1" type="search" name="keyword" placeholder="Cari merchant atau makanan" value="{{ request('keyword') }}" aria-label="Search">
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -62,35 +62,20 @@
         <section class="bg-white pt-5 pb-3">
             <div class="container">
                 <h2 class="mb-4"><span class="text-primary">Favorit</span> orang-orang</h2>
-                <div class="row mb-4">
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
+                <div class="row mb-2 mb-lg-4">
+                    @if (count($Merchants) != 0)
+                        @foreach ($Merchants as $Merchant)
+                        <div class="col-lg-3 mb-3">
+                            <div class="card border-0">
+                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Merchant->photo }}">
+                                <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Merchant->name }}</a>
+                                <div class="text-secondary">Roti, Kue</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @else
+                    <div class="h3 py-5 text-center">Oops, belum ada Merchant yang tersedia disini!</div>
+                    @endif
                 </div>
                 <a class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
             </div>
@@ -99,35 +84,26 @@
         <section class="bg-white pt-5 pb-3">
             <div class="container">
                 <h2 class="mb-4">Ada yang <span class="text-primary">Gratis</span> nih!</h2>
-                <div class="row mb-4">
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
+                <div class="row mb-2 mb-lg-4">
+                    @if (count($Products) != 0)
+                        @foreach ($Products as $Product)
+                        <div class="col-lg-3 mb-3">
+                            <div class="card border-0">
+                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Product->photo }}">
+                                <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Product->name }}</a>
+                                <div>
+                                    @if ($Product->price != 0)
+                                    <span class="text-secondary">IDR {{ number_format($Product->price) }}</span>
+                                    @else
+                                    <span class="text-primary">Gratis</span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card border-0">
-                            <img class="img-thumbnail rounded-3 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            <a class="h5 text-dark text-decoration-none text-truncate">Dunkin Donut Jatinangor</a>
-                            <div class="text-secondary">Roti, Kue</div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @else
+                    <div class="h3 py-5 text-center">Oops, belum ada Produk yang tersedia disini!</div>
+                    @endif
                 </div>
                 <a class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
             </div>

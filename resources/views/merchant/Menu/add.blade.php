@@ -49,10 +49,10 @@
 <script>
 $("#free").change(function() {
     if(this.checked) {
-        $("#price").attr('disabled','disabled');
+        $("#price").attr('readonly','readonly');
         $("#price").val(0);
     }else{
-        $("#price").removeAttr('disabled');
+        $("#price").removeAttr('readonly');
         $("#price").val('');
     }
 });
