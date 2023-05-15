@@ -5,10 +5,6 @@
 <div class="container-fluid">
     <div class="card bg-primary rounded-3">
         <div class="card-body text-white pt-5">
-<<<<<<< HEAD
-            <h2 class="font-maisonExtraBold mb-0">{{ auth()->guard('merchant')->user()->name }}</h2>
-            <div>Last updated: 12 March 2023</div>
-=======
             <div class="d-md-flex flex-row">
                 <div class="img-profile">
                     <img src="/storage/{{ auth()->guard('merchant')->user()->photo }}" class="rounded-3">
@@ -20,7 +16,6 @@
                     </div>
                 </div>
             </div>
->>>>>>> b64651cd1455309ed98ccfca812f20f1fdc19a01
         </div>
     </div>
 </div>

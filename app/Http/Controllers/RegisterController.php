@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -20,7 +21,7 @@ class RegisterController extends Controller
             'password' => 'required|max:255'
         ]);
 
-        $validated['password'] = password_hash($validated['password'], PASSWORD_DEFAULT);
+        $validated['password'] = Hash::make($validated['password']);
 
         if(Merchant::create($validated)){
             $request->session()->flash('status', 'Berhasil mendaftar');
