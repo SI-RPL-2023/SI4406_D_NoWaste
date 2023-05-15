@@ -36,5 +36,12 @@ Route::group(['prefix' => 'merchant', 'middleware' => 'auth.merchant'], function
     Route::get('/menu/{product}/edit', [ProductController::class, 'edit']);
     Route::post('/menu/{product}/edit', [ProductController::class, 'update']);
     Route::delete('/menu/{product}', [ProductController::class, 'destroy']);
+<<<<<<< HEAD
+=======
+    Route::get('/profile', [MerchantController::class, 'edit']);
+    Route::post('/profile', [MerchantController::class, 'update']);
+    Route::get('/profile/password', [MerchantController::class, 'editPassword']);
+    Route::post('/profile/password', [MerchantController::class, 'updatePassword']);
+>>>>>>> b64651cd1455309ed98ccfca812f20f1fdc19a01
     Route::get('/logout', [LoginController::class, 'destroy']);
 });

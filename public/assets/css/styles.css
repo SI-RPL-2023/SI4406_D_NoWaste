@@ -101,4 +101,28 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+<<<<<<< HEAD
+=======
+}
+
+.img-profile {
+	display: block;
+	height: 150px;
+	width: 150px;
+}
+
+.img-profile img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border: 5px solid #fff;
+}
+
+img.img-profile-edit {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+>>>>>>> b64651cd1455309ed98ccfca812f20f1fdc19a01
 }
