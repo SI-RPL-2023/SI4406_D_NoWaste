@@ -101,8 +101,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-<<<<<<< HEAD
-=======
 }
 
 .img-profile {
@@ -124,5 +122,4 @@ img.img-profile-edit {
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
->>>>>>> b64651cd1455309ed98ccfca812f20f1fdc19a01
 }
