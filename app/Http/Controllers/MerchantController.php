@@ -62,4 +62,12 @@ class MerchantController extends Controller
             return redirect('/merchant/profile/password')->with('error', 'Password lama tidak sesuai');
         }
     }
+
+    public function show(Merchant $merchant)
+    {
+        return view('web.merchant', [
+            'Merchant' => $merchant,
+            'Products' => $merchant->products
+        ]);
+    }
 }
