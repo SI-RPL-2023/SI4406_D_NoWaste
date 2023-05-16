@@ -2,34 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        if (!Auth::guard('merchant')->user()) {
-            return view('login');  
+        return view('admin.home');
+    }
+    
+    public function signin()
+    {
+        if (!Auth::guard('admin')->user()) {
+            return view('signin');  
         } else {
-            return redirect('/merchant');
+            return redirect('/admin');
         }
     }
 
     public function auth(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        if (Auth::guard('merchant')->attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/merchant');
+            return redirect()->intended('/admin');
         }
 
-        return back()->with('LoginError', 'Email atau password salah');
+        return back()->with('LoginError', 'Username atau password salah');
     }
 
     public function destroy(Request $request)
@@ -37,6 +43,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/signin');
     }
 }

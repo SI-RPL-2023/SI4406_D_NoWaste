@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MerchantController;
@@ -21,6 +22,7 @@ use Illuminate\Auth\Middleware\AuthenticateMerchant;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/search', [HomeController::class, 'search']);
+Route::get('/merchants/{merchant}', [MerchantController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'auth']);
@@ -41,4 +43,12 @@ Route::group(['prefix' => 'merchant', 'middleware' => 'auth.merchant'], function
     Route::get('/profile/password', [MerchantController::class, 'editPassword']);
     Route::post('/profile/password', [MerchantController::class, 'updatePassword']);
     Route::get('/logout', [LoginController::class, 'destroy']);
+});
+
+Route::get('/signin', [AdminController::class, 'signin']);
+Route::post('/signin', [AdminController::class, 'auth']);
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function() {
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/signout', [AdminController::class, 'destroy']);
 });
