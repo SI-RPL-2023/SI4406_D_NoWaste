@@ -6,7 +6,7 @@
     <div class="card bg-primary rounded-3 mb-3">
         <div class="card-body text-white pt-5">
             <h2 class="font-maisonExtraBold mb-0">{{ auth()->guard('merchant')->user()->name }}</h2>
-            <div>Last updated: 12 March 2023</div>
+            <div>Last updated: {{ date('d F Y', strtotime(auth()->guard('merchant')->user()->updated_at)) }}</div>
         </div>
     </div>
     <div class="mb-3">

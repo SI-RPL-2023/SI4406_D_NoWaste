@@ -61,15 +61,14 @@
 
         <section class="bg-white pt-5 pb-3">
             <div class="container">
-                <h2 class="mb-4"><span class="text-primary">Favorit</span> orang-orang</h2>
+                <h2 class="mb-4">Merchant <span class="text-primary">Favorit</span></h2>
                 <div class="row mb-2 mb-lg-4">
                     @if (count($Merchants) != 0)
                         @foreach ($Merchants as $Merchant)
                         <div class="col-lg-3 mb-3">
                             <div class="card border-0">
                                 <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Merchant->photo }}">
-                                <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Merchant->name }}</a>
-                                <div class="text-secondary">Roti, Kue</div>
+                                <a href="/merchants/{{ $Merchant->id }}" class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Merchant->name }}</a>
                             </div>
                         </div>
                         @endforeach
