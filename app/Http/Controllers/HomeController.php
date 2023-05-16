@@ -25,4 +25,9 @@ class HomeController extends Controller
             "Merchants" => Merchant::latest()->where('name', 'like', '%' . request('keyword') . '%')->get()
         ]);
     }
+
+    public function merchant()
+    {
+        
+    }
 }
