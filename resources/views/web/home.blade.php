@@ -76,13 +76,15 @@
                     <div class="h3 py-5 text-center">Oops, belum ada Merchant yang tersedia disini!</div>
                     @endif
                 </div>
+                @if (count($Merchants) != 0)
                 <a class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
+                @endif
             </div>
         </section>
 
         <section class="bg-white pt-5 pb-3">
             <div class="container">
-                <h2 class="mb-4">Ada yang <span class="text-primary">Gratis</span> nih!</h2>
+                <h2 class="mb-4">Produk <span class="text-primary">Terbaru</span> nih!</h2>
                 <div class="row mb-2 mb-lg-4">
                     @if (count($Products) != 0)
                         @foreach ($Products as $Product)
@@ -104,7 +106,9 @@
                     <div class="h3 py-5 text-center">Oops, belum ada Produk yang tersedia disini!</div>
                     @endif
                 </div>
+                @if (count($Products) != 0)
                 <a class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
+                @endif
             </div>
         </section>
 
@@ -112,30 +116,24 @@
             <div class="container">
                 <h2 class="mb-4">Cari tahu di <span class="text-primary">Artikel</span></h2>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <img class="img-thumbnail rounded-4 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            </div>
-                            <div class="col-lg-6">
-                                <a class="h5 text-dark text-decoration-none">Bagi-bagi Makanan Gratis, Rayakan Bulan Kebersamaan</a>
-                                <div class="text-primary">23 Mar 2023</div>
-                                <p class="font-maisonBook" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <img class="img-thumbnail rounded-4 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
-                            </div>
-                            <div class="col-lg-6">
-                                <a class="h5 text-dark text-decoration-none">Pakai Debit BCA, Harga Lebih Murah</a>
-                                <div class="text-primary">6 Mar 2023</div>
-                                <p class="font-maisonBook" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
+                    @if (count($Articles) != 0)
+                        @foreach ($Articles as $Article)
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img class="img-thumbnail rounded-4 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
+                                </div>
+                                <div class="col-lg-6">
+                                    <a class="h5 text-dark text-decoration-none">Bagi-bagi Makanan Gratis, Rayakan Bulan Kebersamaan</a>
+                                    <div class="text-primary">23 Mar 2023</div>
+                                    <p class="font-maisonBook" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        @endforeach
+                    @else
+                    <div class="h3 py-5 text-center">Belum ada artikel</div>
+                    @endif
                 </div>
             </div>
         </section>
