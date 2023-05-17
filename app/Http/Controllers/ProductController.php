@@ -46,7 +46,7 @@ class ProductController extends Controller
 
         if(Product::create($validated)){
             return redirect('/merchant/menu')->with('success', 'Menu baru berhasil ditambahkan.');
-        }else {
+        } else {
             return back()->with('error', 'Menu gagal ditambahkan.');
         }
     }
