@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\RegisterController;
@@ -50,5 +51,10 @@ Route::post('/signin', [AdminController::class, 'auth']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function() {
     Route::get('/', [AdminController::class, 'index']);
+    Route::get('/article', [ArticleController::class, 'index']);
+    Route::get('/article/create', [ArticleController::class, 'create']);
+    Route::post('/article/create', [ArticleController::class, 'store']);
+    Route::get('/article/checkSlug', [ArticleController::class, 'checkSlug']);
+    Route::post('/article/ckeditorUpload', [ArticleController::class, 'ckeditorUpload'])->name('ckeditor.upload');
     Route::get('/signout', [AdminController::class, 'destroy']);
 });

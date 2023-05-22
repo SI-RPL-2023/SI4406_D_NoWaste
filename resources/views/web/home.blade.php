@@ -121,12 +121,13 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <img class="img-thumbnail rounded-4 border-0 p-0 mb-3" src="../assets/img/bg-masthead.jpg">
+                                    <img class="img-product rounded-4 border-0 p-0 mb-3" src="{{ $Article->image != null ? $Article->image : '/assets/img/no-image.png' }}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <a class="h5 text-dark text-decoration-none">Bagi-bagi Makanan Gratis, Rayakan Bulan Kebersamaan</a>
-                                    <div class="text-primary">23 Mar 2023</div>
-                                    <p class="font-maisonBook" style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quae fuga corrupti assumenda quaerat necessitatibus sunt distinctio sed sequi dolorem, accusamus quos repellendus quod dolore eaque dolores rerum. Reiciendis, reprehenderit.</p>
+                                    <a class="h5 text-dark text-decoration-none">{{ $Article->title }}</a>
+                                    <div class="text-primary mb-3">{{ date('d M Y', strtotime($Article->published_at)) }}</div>
+                                    <p class="font-maisonBook mb-0" style="text-align: justify">{{ Str::limit(strip_tags($Article->body), 200) }}</p>
+                                    <a href="/blog/{{ $Article->slug }}" class="text-primary">Read more</a>
                                 </div>
                             </div>
                         </div>

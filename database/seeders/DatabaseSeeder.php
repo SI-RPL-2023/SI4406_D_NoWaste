@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin;
 use App\Models\Merchant;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +22,12 @@ class DatabaseSeeder extends Seeder
              'name' => 'Dunkin Donut Bojongsoang',
              'email' => 'test@example.com',
              'password' => Hash::make('password'),
+        ]);
+
+        DB::table('admins')->insert([
+            'name' => 'Admin',
+            'username' => 'adminn',
+            'password' => Hash::make('password')
         ]);
     }
 }
