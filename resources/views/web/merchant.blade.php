@@ -40,14 +40,16 @@
                 </nav>
                 <div class="card bg-primary rounded-3">
                     <div class="card-body text-white pt-5">
-                        <div class="d-md-flex flex-row">
-                            <div class="img-profile">
-                                <img src="/storage/{{ $Merchant->photo }}" class="rounded-3">
-                            </div>
-                            <div class="align-self-end mx-md-3">
-                                <h1 class="font-maisonExtraBold mt-3 mt-md-5 mb-0">{{ $Merchant->name }}</h1>
+                        <div class="row">
+                            <div class="col-lg-8 align-self-end">
+                                <h1 class="font-maisonExtraBold mb-2">{{ $Merchant->name }}</h1>
                                 <div>
                                     {{ $Merchant->bio }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4 d-flex justify-content-end">
+                                <div class="img-profile">
+                                    <img src="/storage/{{ $Merchant->photo }}" class="rounded-3">
                                 </div>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Product;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class HomeController extends Controller
     {
         return view('web.home', [
             "Products" => Product::latest()->limit(4)->get(),
-            "Merchants" => Merchant::latest()->limit(4)->get()
+            "Merchants" => Merchant::latest()->limit(4)->get(),
+            "Articles" => Article::where('status', 1)->latest()->limit(2)->get()
         ]);
     }
 
