@@ -38,33 +38,29 @@ class ArticleController extends Controller
             'body' => 'required'
         ]);
 
-        $imageSrc = $this->getImageSrcFromBody($validatedData['body']);
-        if (!empty($imageSrc)) {
-            $validatedData['image'] = $imageSrc;
-        }
-
-        $validatedData['status'] = $request->status ? 1 : 0;
+        $imageSrc = $this->extractImageSrcFromBody($validatedData['body']);
+        $validatedData['image'] = $imageSrc;
+        $validatedData['status'] = $request->has('status') ? 1 : null;
         $validatedData['published_at'] = $validatedData['status'] ? date("Y-m-d H:i:s") : null;
         $validatedData['admin_id'] = auth()->guard('admin')->user()->id;
 
-        if (Article::create($validatedData)) {
+        $article = Article::create($validatedData);
+
+        if ($article) {
             return redirect('/admin/article')->with('success', 'Artikel baru berhasil dibuat.');
         } else {
             return back()->with('error', 'Artikel gagal disimpan.');
         }
     }
 
-    private function getImageSrcFromBody($body)
+    private function extractImageSrcFromBody($body)
     {
         $pattern = '/<img[^>]+src="([^"]+)"/';
         preg_match($pattern, $body, $matches);
 
-        if (!empty($matches[1])) {
-            return $matches[1];
-        }
-
-        return null;
+        return !empty($matches[1]) ? $matches[1] : null;
     }
+
 
 
     /**
@@ -106,7 +102,7 @@ class ArticleController extends Controller
         return response()->json(['slug' => $slug]);
     }
 
-    public function ckeditorUpload(Request $request)
+    public function ckeditorUploadImage(Request $request)
     {
         if ($request->hasFile('upload')) {
             $originName = $request->file('upload')->getClientOriginalName();
