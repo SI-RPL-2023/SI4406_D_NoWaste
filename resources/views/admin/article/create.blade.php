@@ -46,7 +46,7 @@
                 <div class="form-group mb-3">
                     <label class="form-label">Visibilitas</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="formSwitch" value="1" name="status">
+                        <input class="form-check-input" type="checkbox" role="switch" id="formSwitch" name="status">
                         <label class="form-check-label" for="formSwitch" id="formSwichLabel">Draf (Tidak Publik)</label>
                     </div>
                 </div>
