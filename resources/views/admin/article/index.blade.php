@@ -20,7 +20,7 @@
                         <img class="img-product" src="{{ $Article->image != null ? $Article->image : '/assets/img/no-image.png' }}">
                     </div>
                     <div class="col-lg-6">
-                        <a class="font-maisonExtraBold h5 text-dark text-decoration-none">
+                        <a href="/admin/article/{{ $Article->id }}/edit" class="font-maisonExtraBold h5 text-dark text-decoration-none">
                             @if($Article->status == 0) <span class="text-primary">[ Draf ]</span>@endif
                             {{ $Article->title }}
                         </a>
@@ -57,9 +57,9 @@
 @endif
 
 <script>
-    $(document).ready(function(){
-      $('.toast').toast('show');
-    });
+$(document).ready(function(){
+    $('.toast').toast('show');
+});
 </script>
 
 @endsection
