@@ -43,7 +43,7 @@ class ArticleController extends Controller
 
         $imageSrc = $this->extractImageSrcFromBody($validatedData['body']);
         $validatedData['image'] = $imageSrc;
-        $validatedData['status'] = $request->has('status') ? 1 : 0;
+        $validatedData['status'] = $request->has('status') ? 1 : null;
         $validatedData['published_at'] = $validatedData['status'] ? date("Y-m-d H:i:s") : null;
         $validatedData['admin_id'] = auth()->guard('admin')->user()->id;
 
@@ -71,7 +71,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('web.blog.article', [
+            'Article' => $article,
+            'Articles' => Article::where('status', 1)->latest()->limit(4)->get()
+        ]);
     }
 
     /**

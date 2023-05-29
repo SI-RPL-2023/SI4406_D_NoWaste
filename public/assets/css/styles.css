@@ -127,3 +127,45 @@ img.img-profile-edit {
 .active {
     color: #000 !important;
 }
+
+.blog-content {
+    color: #000;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: justify;
+}
+.blog-content img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .blog-content img {
+        max-width: 640px;
+        height: auto;
+        display: block;
+        border-radius: 1.5rem;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.featured-article-title {
+    -webkit-line-clamp: 2;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
+.featured-article-paragraph {
+    text-align: justify;
+    -webkit-line-clamp: 5;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
