@@ -16,7 +16,7 @@ class ArticleController extends Controller
         return view('admin.article.index', [
             'page' => 'Article',
             'Admin' => auth()->guard('admin')->user(),
-            'Articles' => Article::all()
+            'Articles' => Article::latest()->get()
         ]);
     }
 
@@ -43,7 +43,7 @@ class ArticleController extends Controller
 
         $imageSrc = $this->extractImageSrcFromBody($validatedData['body']);
         $validatedData['image'] = $imageSrc;
-        $validatedData['status'] = $request->has('status') ? 1 : null;
+        $validatedData['status'] = $request->has('status') ? 1 : 0;
         $validatedData['published_at'] = $validatedData['status'] ? date("Y-m-d H:i:s") : null;
         $validatedData['admin_id'] = auth()->guard('admin')->user()->id;
 
@@ -128,17 +128,23 @@ class ArticleController extends Controller
         return response()->json(['slug' => $slug]);
     }
 
-    public function ckeditorUploadImage(Request $request)
+    public function ckeditorStoreImage(Request $request)
     {
         if ($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName . '_' . time() . '.' . $extension;
+            $file = $request->file('upload');
+            $originalName = $file->getClientOriginalName();
+            $fileName = pathinfo($originalName, PATHINFO_FILENAME);
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $fileExtension;
       
-            $url = $request->file('upload')->storeAs('articles', $fileName, 'public');
+            $storedFilePath = $file->storeAs('articles', $fileName, 'public');
   
-            return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => '/storage/'.$url]);
+            return response()->json([
+                'fileName' => $fileName, 
+                'uploaded'=> 1, 
+                'url' => '/storage/' . $storedFilePath
+            ]);
         }
     }
+
 }
