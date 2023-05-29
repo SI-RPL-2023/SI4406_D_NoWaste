@@ -124,9 +124,9 @@
                                     <img class="img-product rounded-4 border-0 p-0 mb-3" src="{{ $Article->image != null ? $Article->image : '/assets/img/no-image.png' }}">
                                 </div>
                                 <div class="col-lg-6">
-                                    <a class="h5 text-dark text-decoration-none">{{ $Article->title }}</a>
-                                    <div class="text-primary mb-3">{{ date('d M Y', strtotime($Article->published_at)) }}</div>
-                                    <p class="font-maisonBook mb-0" style="text-align: justify">{{ Str::limit(strip_tags($Article->body), 200) }}</p>
+                                    <a href="/blog/{{ $Article->slug }}" class="h5 text-dark text-decoration-none featured-article-title mb-0">{{ $Article->title }}</a>
+                                    <div class="text-primary mb-2">{{ date('d M Y', strtotime($Article->published_at)) }}</div>
+                                    <p class="font-maisonBook mb-0 featured-article-paragraph">{{ Str::limit(strip_tags($Article->body), 250) }}</p>
                                     <a href="/blog/{{ $Article->slug }}" class="text-primary">Read more</a>
                                 </div>
                             </div>
