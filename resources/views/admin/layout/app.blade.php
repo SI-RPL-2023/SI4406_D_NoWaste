@@ -55,19 +55,19 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-secondary">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/admin">Beranda</a>
+                                <a class="nav-link @if($page == 'Home') active @endif" aria-current="page" href="/admin">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/article">Artikel</a>
+                                <a class="nav-link @if($page == 'Article') active @endif" href="/admin/article">Artikel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/merchant">Merchant</a>
+                                <a class="nav-link @if($page == 'Merchant') active @endif" href="/admin/merchant">Merchant</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/prduct">Produk</a>
+                                <a class="nav-link @if($page == 'Product') active @endif" href="/admin/prduct">Produk</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/profile">Profil</a>
+                                <a class="nav-link @if($page == 'Profile') active @endif" href="/admin/profile">Profil</a>
                             </li>
                         </ul>
                     </div>

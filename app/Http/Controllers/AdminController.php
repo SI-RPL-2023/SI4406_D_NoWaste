@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Article;
+use App\Models\Product;
+use App\Models\Merchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,7 +13,12 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.home');
+        return view('admin.home', [
+            'Merchants' => Merchant::all(),
+            'Products' => Product::all(),
+            'Articles' => Article::where('status', 1)->get(),
+            'page' => 'Home'
+        ]);
     }
     
     public function signin()

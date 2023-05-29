@@ -43,7 +43,7 @@ class ArticleController extends Controller
 
         $imageSrc = $this->extractImageSrcFromBody($validatedData['body']);
         $validatedData['image'] = $imageSrc;
-        $validatedData['status'] = $request->has('status') ? 1 : null;
+        $validatedData['status'] = $request->has('status') ? 1 : 0;
         $validatedData['published_at'] = $validatedData['status'] ? date("Y-m-d H:i:s") : null;
         $validatedData['admin_id'] = auth()->guard('admin')->user()->id;
 
