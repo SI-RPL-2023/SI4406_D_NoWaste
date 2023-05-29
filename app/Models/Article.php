@@ -28,4 +28,9 @@ class Article extends Model
             ]
         ];
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }
