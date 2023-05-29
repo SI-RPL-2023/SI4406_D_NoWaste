@@ -54,6 +54,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function() {
     Route::get('/article', [ArticleController::class, 'index']);
     Route::get('/article/create', [ArticleController::class, 'create']);
     Route::post('/article/create', [ArticleController::class, 'store']);
+    Route::get('/article/{article}/edit', [ArticleController::class, 'edit']);
+    Route::post('/article/{article}/edit', [ArticleController::class, 'update']);
     Route::get('/article/checkSlug', [ArticleController::class, 'checkSlug']);
     Route::post('/article/ckeditorUpload', [ArticleController::class, 'ckeditorUpload'])->name('ckeditor.upload');
     Route::get('/signout', [AdminController::class, 'destroy']);
