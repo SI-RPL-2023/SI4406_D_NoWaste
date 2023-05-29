@@ -16,13 +16,43 @@
         </div>
     </div>
 
+    <div class="row gx-2 mb-3">
+        <h4>Dasbor</h4>
+        <div class="col-md-4 mb-3">
+            <div class="card rounded-0 shadow-sm">
+                <div class="card-body">
+                    <div>Merchant</div>
+                    <div class="h4 mb-0">{{ $Merchants->count() }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card rounded-0 shadow-sm">
+                <div class="card-body">
+                    <div>Produk</div>
+                    <div class="h4 mb-0">{{ $Products->count() }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card rounded-0 shadow-sm">
+                <div class="card-body">
+                    <div>Artikel</div>
+                    <div class="h4 mb-0">{{ $Articles->count() }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row gx-2">
         <h4>Pintasan</h4>
         <div class="col-md-4 mb-3">
             <div class="card rounded-0 shadow-sm">
-                <div class="card-body">
-                    <div>Tulis Artikel</div>
-                </div>
+                <a href="/admin/article/" class="text-decoration-none">
+                    <div class="card-body">
+                        <div>Tulis Artikel</div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="col-md-4 mb-3">

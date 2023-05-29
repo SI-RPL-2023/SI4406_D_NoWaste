@@ -123,3 +123,7 @@ img.img-profile-edit {
     height: auto;
     aspect-ratio: 1/1;
 }
+
+.active {
+    color: #000 !important;
+}
