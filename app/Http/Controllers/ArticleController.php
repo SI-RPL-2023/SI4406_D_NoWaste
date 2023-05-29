@@ -14,6 +14,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('admin.article.index', [
+            'page' => 'Article',
             'Admin' => auth()->guard('admin')->user(),
             'Articles' => Article::all()
         ]);
@@ -24,7 +25,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.article.create');
+        return view('admin.article.create', [
+            'page' => 'Article'
+        ]);
     }
 
     /**
@@ -76,7 +79,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('admin.article.edit', [
+            'page' => 'Article',
+            'Article' => $article
+        ]);
     }
 
     /**
@@ -84,7 +90,24 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
+        $imageSrc = $this->extractImageSrcFromBody($validatedData['body']);
+        $validatedData['image'] = $imageSrc;
+        $validatedData['status'] = $request->has('status') ? 1 : 0;
+        $validatedData['published_at'] = $validatedData['status'] == 1 ? date("Y-m-d H:i:s") : $article->published_at;
+
+        $article = Article::where('id', $article->id)->update($validatedData);
+
+        if ($article) {
+            return back()->with('success', 'Perubahan berhasil disimpan.');
+        } else {
+            return back()->with('error', 'Perubahan gagal disimpan.');
+        }
     }
 
     /**

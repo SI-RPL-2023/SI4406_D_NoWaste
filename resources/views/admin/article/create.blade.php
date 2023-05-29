@@ -57,9 +57,24 @@
 
 </div>
 
+@if(session()->has('error'))
+<div class="toast align-items-center bg-danger text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 10px; right: 10px;">
+    <div class="d-flex">
+      <div class="toast-body">
+        {{ session('error') }}
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+@endif
+
 <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
 
 <script>
+$(document).ready(function(){
+    $('.toast').toast('show');
+});
+
 $("#formSwitch").change(function() {
     if(this.checked) {
         $("#formSwichLabel").html('Publik');
