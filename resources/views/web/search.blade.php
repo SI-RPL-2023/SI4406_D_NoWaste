@@ -60,22 +60,19 @@
                 <div class="tab-content" id="myTabContent">
                     <!-- Products Tab-->
                     <div class="tab-pane py-3 py-lg-4 fade show active" id="product-tab-pane" role="tabpanel" aria-labelledby="product-tab" tabindex="0">
-                        <div class="d-flex justify-content-end mb-3">
-                            
-                        </div>
                         <div class="row">
                             <div class="col-lg-3 mb-3">
                                 <h6>Filter</h6>
                                 <div class="card py-4 px-3">
-                                    <h5>Urutkan</h5>
-                                    <select name="order" class="form-select mb-3">
-                                        <option value="">Terbaru</option>
-                                        <option value="">Harga Terendah</option>
-                                        <option value="">Harga Tertinggi</option>
-                                    </select>
-                                    <hr>
-                                    <h5>Harga</h5>
                                     <form method="get" action="/search" class="mb-2">
+                                        <h5>Urutkan</h5>
+                                        <select name="orderBy" class="form-select mb-3">
+                                            <option value="">Terbaru</option>
+                                            <option value="min_price" {{ request('orderBy') == 'min_price' ? 'selected' : '' }}>Harga Terendah</option>
+                                            <option value="max_price" {{ request('orderBy') == 'max_price' ? 'selected' : '' }}>Harga Tertinggi</option>
+                                        </select>
+                                        <hr>
+                                        <h5>Harga</h5>
                                         <input type="hidden" name="keyword" value="{{ $keyword }}">
                                         <input type="number" class="form-control rounded-0 mb-3" id="minPrice" value="{{ request('minPrice') }}" placeholder="Harga Minimum">
                                         <input type="number" class="form-control rounded-0 mb-3" id="maxPrice" value="{{ request('maxPrice') }}" placeholder="Harga Maximum">
@@ -115,7 +112,7 @@
                     </div>
 
                     <!-- Merchants Tab-->
-                    <div class="tab-pane py-3 py-lg-5 fade" id="merchant-tab-pane" role="tabpanel" aria-labelledby="merchant-tab" tabindex="0">
+                    <div class="tab-pane py-3 py-lg-4 fade" id="merchant-tab-pane" role="tabpanel" aria-labelledby="merchant-tab" tabindex="0">
                         <div class="row">
                             @if (count($Merchants) != 0)
                                 @foreach ($Merchants as $Merchant)
