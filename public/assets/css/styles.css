@@ -169,3 +169,11 @@ img.img-profile-edit {
     text-overflow: ellipsis;
     display: -webkit-box;
 }
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.fs-5 {
+    font-size: 1rem !important;
+}

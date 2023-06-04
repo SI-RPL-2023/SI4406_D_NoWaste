@@ -61,10 +61,7 @@
                                 <a class="nav-link @if($page == 'Article') active @endif" href="/admin/article">Artikel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if($page == 'Merchant') active @endif" href="/admin/merchant">Merchant</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @if($page == 'Product') active @endif" href="/admin/prduct">Produk</a>
+                                <a class="nav-link @if($page == 'Merchant') active @endif" href="/admin/merchants">Merchant</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link @if($page == 'Profile') active @endif" href="/admin/profile">Profil</a>
