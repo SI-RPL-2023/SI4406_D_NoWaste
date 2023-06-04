@@ -3,7 +3,7 @@
 @section('content')
 <!-- Content -->
 <div class="container-fluid">
-    <div class="card bg-primary rounded-3">
+    <div class="card bg-primary rounded-3 mb-3">
         <div class="card-body text-white pt-5">
             <div class="d-md-flex flex-row">
                 <div class="img-profile">
@@ -14,6 +14,33 @@
                     <div class="d-inline-flex">
                         <a href="/merchant/profile" class="text-white">Edit Profil</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <a href="/merchant/menu" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <div>Edit Menu</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <a href="/merchant/verify" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <div>Verifikasi Merchant</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div>Verifikasi Merchant</div>
                 </div>
             </div>
         </div>

@@ -8,9 +8,6 @@
         <title>NoWaste</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/1565b44817.js" crossorigin="anonymous"></script>
         
         <!-- Fonts -->
         <link href="/assets/fonts/maison-neue-extended-extra-bold.css" rel="stylesheet">
@@ -23,6 +20,10 @@
 
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/1565b44817.js" crossorigin="anonymous"></script>
 
     </head>
     <body class="bg-white">
@@ -65,10 +66,11 @@
                 <div class="row mb-2 mb-lg-4">
                     @if (count($Merchants) != 0)
                         @foreach ($Merchants as $Merchant)
-                        <div class="col-lg-3 mb-3">
+                        <div class="col-md-6 col-lg-3 mb-3">
                             <div class="card border-0">
                                 <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Merchant->photo }}">
                                 <a href="/merchants/{{ $Merchant->id }}" class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Merchant->name }}</a>
+                                @if($Merchant->status == 1)<div class="font-maisonBook text-primary"><i class="fs-5 fa-solid fa-circle-check"></i> Merchant Terverifikasi</div>@endif
                             </div>
                         </div>
                         @endforeach
@@ -88,7 +90,7 @@
                 <div class="row mb-2 mb-lg-4">
                     @if (count($Products) != 0)
                         @foreach ($Products as $Product)
-                        <div class="col-lg-3 mb-3">
+                        <div class="col-md-6 col-lg-3 mb-3">
                             <div class="card border-0">
                                 <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Product->photo }}">
                                 <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Product->name }}</a>
