@@ -27,8 +27,10 @@ class MerchantController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'bio' => 'max:255',
-            'photo' => 'image|mimes:jpg,jpeg,png,svg|max:2048'
+            'photo' => 'image|mimes:jpg,jpeg,png,svg|max:2048',
         ]);
+
+        $validated['map'] = $this->replaceMapSizeValue($request->map);
 
         if($request->file('photo')){
             $validated['photo'] = $request->file('photo')->store('uploads', 'public');
@@ -39,6 +41,17 @@ class MerchantController extends Controller
         }else {
             return back()->with('error', 'Perubahan gagal disimpan.');
         }
+    }
+
+    private function replaceMapSizeValue($html)
+    {
+        // Mengganti nilai width
+        $html = preg_replace('/width="[^"]+"/', 'width="100%"', $html);
+
+        // Mengganti nilai height
+        $html = preg_replace('/height="[^"]+"/', 'height="100%"', $html);
+
+        return $html;
     }
 
     public function editPassword()
