@@ -23,7 +23,7 @@ class HomeController extends Controller
         return view('web.search', [
             "title" => "Pencarian: ".request('keyword'),
             "keyword" => request('keyword'),
-            "Products" => Product::latest()->filter()->get(),
+            "Products" => Product::filter()->get(),
             "Merchants" => Merchant::latest()->where('name', 'like', '%' . request('keyword') . '%')->get()
         ]);
     }
