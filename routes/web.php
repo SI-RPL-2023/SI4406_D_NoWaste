@@ -44,6 +44,8 @@ Route::group(['prefix' => 'merchant', 'middleware' => 'auth.merchant'], function
     Route::post('/profile', [MerchantController::class, 'update']);
     Route::get('/profile/password', [MerchantController::class, 'editPassword']);
     Route::post('/profile/password', [MerchantController::class, 'updatePassword']);
+    Route::get('/verify', [MerchantController::class, 'showVerify']);
+    Route::post('/verify', [MerchantController::class, 'sendVerify']);
     Route::get('/logout', [LoginController::class, 'destroy']);
 });
 
@@ -59,5 +61,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function() {
     Route::post('/article/{article}/edit', [ArticleController::class, 'update']);
     Route::get('/article/checkSlug', [ArticleController::class, 'checkSlug']);
     Route::post('/article/ckeditorUpload', [ArticleController::class, 'ckeditorStoreImage'])->name('ckeditor.upload');
+    Route::get('/merchants', [AdminController::class, 'showMerchantList']);
+    Route::get('/merchants/verifies/{merchantverify}/detail', [AdminController::class, 'showMerchantVerify']);
+    Route::post('/merchants/verifies/{merchantverify}/confirm', [AdminController::class, 'confirmMerchantVerify']);
+    Route::post('/merchants/verifies/{merchantverify}/reject', [AdminController::class, 'rejectMerchantVerify']);
+    Route::get('/merchants/{merchant}', [AdminController::class, 'showMerchant']);
     Route::get('/signout', [AdminController::class, 'destroy']);
 });

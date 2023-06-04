@@ -7,7 +7,9 @@ use App\Models\Article;
 use App\Models\Product;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use App\Models\MerchantVerify;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -52,5 +54,47 @@ class AdminController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/signin');
+    }
+
+    public function showMerchantList()
+    {
+        return view('admin.merchants.index', [
+            'Merchants' => Merchant::all(),
+            'verifyMerchantRequests' => MerchantVerify::latest()->get(),
+            'verifyMerchantPendingRequests' => MerchantVerify::where('status', 0)->count(),
+            'page' => 'Merchant'
+        ]);
+    }
+
+    public function showMerchantVerify(MerchantVerify $merchantverify)
+    {
+        return view('admin.merchants.verify_detail', [
+            'verifyMerchantRequest' => $merchantverify,
+            'page' => 'Merchant'
+        ]);
+    }
+
+    public function confirmMerchantVerify(MerchantVerify $merchantverify)
+    {
+        if (MerchantVerify::where('id', $merchantverify->id)->update(['status' => 1])) {
+            Merchant::where('id', $merchantverify->merchant_id)->update(['status' => 1]);
+
+            return redirect('admin/merchants')->with('success', 'Permintaan verifikasi telah disetujui.');
+        } else {
+            return back()->with('success', 'Permintaan verifikasi gagal disetujui.');
+        }
+    }
+
+    public function rejectMerchantVerify(MerchantVerify $merchantverify, Request $request)
+    {
+        $validatedData = $request->validate([
+            'note' => 'required'
+        ]);
+
+        if (MerchantVerify::where('id', $merchantverify->id)->update(['status' => 2, 'note' => $validatedData['note']])) {
+            return redirect('admin/merchants')->with('success', 'Permintaan verifikasi telah ditolak.');
+        } else {
+            return back()->with('success', 'Permintaan verifikasi gagal ditolak.');
+        }
     }
 }

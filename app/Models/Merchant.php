@@ -26,4 +26,9 @@ class Merchant extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+
+    public function verifies()
+    {
+        return $this->hasMany(MerchantVerify::class);
+    }
 }

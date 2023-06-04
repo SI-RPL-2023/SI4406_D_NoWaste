@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use App\Models\MerchantVerify;
 use Illuminate\Support\Facades\Hash;
 
 class MerchantController extends Controller
@@ -69,5 +70,36 @@ class MerchantController extends Controller
             'Merchant' => $merchant,
             'Products' => $merchant->products
         ]);
+    }
+
+    public function showVerify()
+    {
+        return view('merchant.profile.verify_merchant', [
+            'Merchant' => auth()->guard('merchant')->user(),
+            'verifies' => MerchantVerify::where('merchant_id', auth()->guard('merchant')->user()->id)->latest()->first()
+        ]);
+    }
+
+    public function sendVerify(Request $request)
+    {
+        $validatedData = $request->validate([
+            'co_name' => 'required|max:255',
+            'co_type' => 'required|max:255',
+            'co_document' => 'mimes:pdf|max:2048',
+            'co_npwp' => 'required|max:255'
+        ]);
+
+        $validatedData['merchant_id'] = auth()->guard('merchant')->user()->id;
+        $validatedData['status'] = 0;
+
+        if($request->file('co_document')){
+            $validatedData['co_document'] = $request->file('co_document')->store('docs', 'public');
+
+            if(MerchantVerify::create($validatedData)){
+                return redirect('/merchant/verify')->with('success', 'Permintaan verifikasi telah terkirim.');
+            }else {
+                return back()->with('error', 'Permintaan verifikasi gagal dikirim.');
+            }
+        }
     }
 }

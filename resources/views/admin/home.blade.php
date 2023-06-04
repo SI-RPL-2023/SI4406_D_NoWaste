@@ -57,9 +57,11 @@
         </div>
         <div class="col-md-4 mb-3">
             <div class="card rounded-0 shadow-sm">
-                <div class="card-body">
-                    <div>Verifikasi Merchant</div>
-                </div>
+                <a href="/admin/merchants/" class="text-decoration-none">
+                    <div class="card-body">
+                        <div>Verifikasi Merchant</div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="col-md-4 mb-3">
