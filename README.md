@@ -4,13 +4,13 @@ NoWaste is a website dedicated to helping individuals and businesses tackle the 
 ## About us
 | Name | NIM | Role |
 |-----------------|-----------------|-----------------|
-| Muhammad Adam Nugraha  | 120220        | `Project Manger` |
-| Riky Indra Sakti       | 120220        | `Analyst`        |
-| Row 3 Data             | 120220        | `Analyst`        |
-| Ikram Zaidan Wicaksono | 1202202204216 | `Programmer`     |
-| Row 5 Data             | 120220        | `Programmer`     |
-| Row 6 Data             | 120220        | `Programmer`     |
-| Row 7 Data             | 120220        | `Programmer`     |
+| Muhammad Adam Nugraha   | 1202204311    | `Project Manger` |
+| Riky Indra Sakti        | 1202204025    | `Analyst`        |
+| Qorina Hazhiratul Qudsi | 1202200090    | `Analyst`        |
+| Ikram Zaidan Wicaksono  | 1202204216    | `Programmer`     |
+| Muhammad Haidar Rais    | 1202204321    | `Programmer`     |
+| Keysia Alodia B.        | 1202204053    | `Programmer`     |
+| Fitrina Annisa Mustada  | 1202204233    | `Programmer`     |
 
 # Instalation
 ## Prerequisite
