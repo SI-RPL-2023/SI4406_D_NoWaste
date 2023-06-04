@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('bio')->nullable();
             $table->string('photo')->nullable();
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }
