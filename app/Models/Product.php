@@ -40,4 +40,9 @@ class Product extends Model
             return $query->where('name', 'like', '%' . request('keyword') . '%')->orderBy('price', 'desc');
         }
     }
+
+    public function merchant()
+    {
+        return $this->belongsTo(Merchant::class);
+    }
 }

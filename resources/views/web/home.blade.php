@@ -68,7 +68,7 @@
                         @foreach ($Merchants as $Merchant)
                         <div class="col-md-6 col-lg-3 mb-3">
                             <div class="card border-0">
-                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Merchant->photo }}">
+                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="{{ $Merchant->photo != null ? '/storage/'.$Merchant->photo : '/assets/img/no-image.png' }}">
                                 <a href="/merchants/{{ $Merchant->id }}" class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Merchant->name }}</a>
                                 @if($Merchant->status == 1)<div class="font-maisonBook text-primary"><i class="fs-5 fa-solid fa-circle-check"></i> Merchant Terverifikasi</div>@endif
                             </div>
@@ -79,7 +79,7 @@
                     @endif
                 </div>
                 @if (count($Merchants) != 0)
-                <a class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
+                <a href="/merchants" class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
                 @endif
             </div>
         </section>
@@ -92,8 +92,8 @@
                         @foreach ($Products as $Product)
                         <div class="col-md-6 col-lg-3 mb-3">
                             <div class="card border-0">
-                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="../storage/{{ $Product->photo }}">
-                                <a class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Product->name }}</a>
+                                <img class="img-product rounded-3 border-0 p-0 mb-2 mb-lg-3" src="/storage/{{ $Product->photo }}">
+                                <a href="/merchants/{{ $Product->merchant->id }}" class="h5 text-dark text-decoration-none text-truncate mb-0">{{ $Product->name }}</a>
                                 <div>
                                     @if ($Product->price != 0)
                                     <span class="text-secondary">IDR {{ number_format($Product->price) }}</span>
@@ -109,7 +109,7 @@
                     @endif
                 </div>
                 @if (count($Products) != 0)
-                <a class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
+                <a href="/products" class="btn btn-outline-primary w-100 py-2">Lihat semua</a>
                 @endif
             </div>
         </section>
