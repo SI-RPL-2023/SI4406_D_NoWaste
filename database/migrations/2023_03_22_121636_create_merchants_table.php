@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('bio')->nullable();
             $table->string('photo')->nullable();
             $table->string('status')->default(0);
-            $table->text('maps')->nullable();
+            $table->text('map')->nullable();
             $table->timestamps();
         });
     }
