@@ -26,17 +26,20 @@ class MerchantController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'bio' => 'max:255',
+            'bio' => 'nullable',
             'photo' => 'image|mimes:jpg,jpeg,png,svg|max:2048',
         ]);
 
-        $validated['map'] = $this->replaceMapSizeValue($request->map);
-
-        if($request->file('photo')){
+        if(isset($request->map)) {
+            $validated['map'] = $this->replaceMapSizeValue($request->map);
+        } else {
+            $validated['map'] = null;
+        }
+        if($request->file('photo')) {
             $validated['photo'] = $request->file('photo')->store('uploads', 'public');
         }
 
-        if(Merchant::where('id', $request->id)->update($validated)){
+        if(Merchant::where('id', $request->id)->update($validated)) {
             return redirect('/merchant/profile')->with('success', 'Perubahan berhasil disimpan.');
         }else {
             return back()->with('error', 'Perubahan gagal disimpan.');

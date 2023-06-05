@@ -28,8 +28,17 @@ class HomeController extends Controller
         ]);
     }
 
-    public function merchant()
+    public function merchants()
     {
-        
+        return view('web.all_merchants', [
+            "Merchants" => Merchant::latest()->get()
+        ]);
+    }
+
+    public function products()
+    {
+        return view('web.all_products', [
+            "Products" => Product::latest()->get()
+        ]);
     }
 }
