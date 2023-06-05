@@ -127,7 +127,7 @@
             </form>
         </div>
         <div class="col-lg-4">
-            <img class="img-profile-edit rounded-4" src="/storage/{{ $Merchant->photo }}" alt="{{ $Merchant->name }}">
+            <img class="img-profile-edit rounded-4" src="{{ $Merchant->photo != null ? '/storage/'.$Merchant->photo : '/assets/img/no-image.png' }}" alt="{{ $Merchant->name }}">
         </div>
     </div>
 </div>

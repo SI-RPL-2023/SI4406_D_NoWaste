@@ -41,7 +41,7 @@
             <a href="/merchant/profile/password" class="btn btn-secondary text-white rounded-0 w-100">Ubah Password</a>
         </div>
         <div class="col-lg-4">
-            <img class="img-profile-edit rounded-4" src="/storage/{{ $Merchant->photo }}" alt="{{ $Merchant->name }}">
+            <img class="img-profile-edit rounded-4" src="{{ $Merchant->photo != null ? '/storage/'.$Merchant->photo : '/assets/img/no-image.png' }}" alt="{{ $Merchant->name }}">
         </div>
     </div>
 </div>

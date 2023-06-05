@@ -23,6 +23,8 @@ use Illuminate\Auth\Middleware\AuthenticateMerchant;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/search', [HomeController::class, 'search']);
+Route::get('/merchants', [HomeController::class, 'merchants']);
+Route::get('/products', [HomeController::class, 'products']);
 Route::get('/merchants/{merchant}', [MerchantController::class, 'show']);
 Route::get('/blog/{article:slug}', [ArticleController::class, 'show']);
 

@@ -7,7 +7,7 @@
         <div class="card-body text-white pt-5">
             <div class="d-md-flex flex-row">
                 <div class="img-profile">
-                    <img src="/storage/{{ auth()->guard('merchant')->user()->photo }}" class="rounded-3">
+                    <img src="{{ auth()->guard('merchant')->user()->photo != null ? '/storage/'.auth()->guard('merchant')->user()->photo : '/assets/img/no-image.png' }}" class="rounded-3">
                 </div>
                 <div class="align-self-end mx-md-3">
                     <h2 class="font-maisonExtraBold mt-3 mt-md-5 mb-0">{{ auth()->guard('merchant')->user()->name }}</h2>
