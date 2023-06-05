@@ -41,13 +41,15 @@
                 <div class="card bg-primary rounded-3">
                     <div class="card-body text-white pt-5">
                         <div class="row">
-                            <div class="col-lg-8 align-self-end">
-                                <h1 class="font-maisonExtraBold mb-2">{{ $Merchant->name }}</h1>
-                                <div>
-                                    {{ $Merchant->bio }}
-                                </div>
+                            <div class="col-lg-9 align-self-end">
+                                <h1 class="font-maisonExtraBold mb-2">
+                                    {{ $Merchant->name }}
+                                    @if($Merchant->status == 1)<i class="fs-3 fa-solid fa-circle-check text-info" title="Merchant Terverifikasi"></i>@endif
+                                </h1>
+                                <div>{{ $Merchant->bio }}</div>
+                                @if(isset($Merchant->map))<a href="#location" class="text-white font-maisonBook">Lihat Lokasi</a>@endif
                             </div>
-                            <div class="col-lg-4 d-flex justify-content-end">
+                            <div class="col-lg-3 d-flex justify-content-end">
                                 <div class="img-profile">
                                     <img src="/storage/{{ $Merchant->photo }}" class="rounded-3">
                                 </div>
@@ -58,7 +60,7 @@
             </div>
         </header>
 
-        <section class="mb-5">
+        <section class="{{ isset($Merchant->map) ? 'mb-3' : 'mb-5' }}">
             <div class="container">
                 <div class="row">
                     @if (count($Products) != 0)
@@ -87,6 +89,14 @@
             </div>
         </section>
         
+        @if(isset($Merchant->map))
+        <section id="location" class="mb-5">
+            <div class="container">
+                <h3>Lokasi</h3>
+                {!! $Merchant->map !!}
+            </div>
+        </section>
+        @endif
         
         @include('web.partials.footer')
 

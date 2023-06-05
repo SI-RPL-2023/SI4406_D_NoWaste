@@ -30,7 +30,11 @@
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label" for="desc">Deskripsi</label>
-                    <textarea id="desc" class="form-control" name="bio" rows="2">{{ $Merchant->bio }}</textarea>
+                    <textarea id="desc" class="form-control" name="bio" rows="3">{{ $Merchant->bio }}</textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="desc">Lokasi</label>
+                    <textarea id="desc" class="form-control" name="map" rows="3" placeholder="Sematkan peta dengan menyalin HTMl dari Google Maps">{{ $Merchant->map }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary text-white rounded-0 w-100 py-2">Simpan</button> 
             </form>
