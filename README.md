@@ -23,7 +23,6 @@ NoWaste is a website dedicated to helping individuals and businesses tackle the 
 1. Clone or download this repository.
 2. Install or update composer.
 ```
-composer install
 composer update
 ```
 3. Copy `.env.example` file and rename to `.env`.
